@@ -79,3 +79,18 @@ model_baseline = Sequential([
     Dense(8, activation='relu', input_shape=(X_train.shape[1],)),
     Dense(1, activation='sigmoid')
 ])
+
+model_baseline.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+
+history_baseline = model_baseline.fit(
+    X_train, y_train,
+    epochs=20,
+    batch_size=32,
+    validation_split=0.1,
+    callbacks=[EarlyStopping(monitor='val_loss', patience=3, restore_best_weights=True)],
+    verbose=1
+)
+
+y_pred_prob_baseline = model_baseline.predict(X_test)
+y_pred_baseline = (y_pred_prob_baseline > 0.5).astype(int)
+print("--- Model 1 Trained ---")
