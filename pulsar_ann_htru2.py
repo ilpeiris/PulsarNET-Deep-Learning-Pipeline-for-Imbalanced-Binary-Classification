@@ -31,3 +31,24 @@ np.random.seed(SEED)
 tf.random.set_seed(SEED)
 
 print("--- Libraries Imported and Seeds Set ---")
+
+# 2. LOAD AND PREPROCESS DATA////
+
+data_url = "https://archive.ics.uci.edu/ml/machine-learning-databases/00372/HTRU2.zip"
+column_names = [
+    "profile_mean", "profile_std", "profile_kurtosis", "profile_skewness",
+    "dm_mean", "dm_std", "dm_kurtosis", "dm_skewness", "target_class"
+]
+
+try:
+    with urllib.request.urlopen(data_url) as response:
+        zip_content = io.BytesIO(response.read())
+    with zipfile.ZipFile(zip_content) as zf:
+        with zf.open('HTRU_2.csv') as csv_file:
+            df = pd.read_csv(csv_file, names=column_names)
+    print(f"Dataset loaded. Total shape: {df.shape}")
+except Exception as e:
+    print(f"Error loading dataset: {e}")
+
+print("\nClass Distribution:")
+print(df['target_class'].value_counts())
