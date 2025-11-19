@@ -94,3 +94,13 @@ history_baseline = model_baseline.fit(
 y_pred_prob_baseline = model_baseline.predict(X_test)
 y_pred_baseline = (y_pred_prob_baseline > 0.5).astype(int)
 print("--- Model 1 Trained ---")
+
+
+# 4. MODEL 2: NAIVE MLP ////
+print("\n--- Training Model 2: 'Naive' MLP (Deeper) ---")
+
+model_naive = Sequential([
+    Dense(32, activation='relu', input_shape=(X_train.shape[1],)),
+    Dense(16, activation='relu'),
+    Dense(1, activation='sigmoid')
+])
