@@ -216,3 +216,17 @@ for i, (name, y_pred) in enumerate(models.items()):
 
 plt.tight_layout()
 plt.show()
+
+# Plot Training History
+plt.figure(figsize=(14, 5))
+plt.subplot(1, 2, 1)
+plt.plot(history_baseline.history['loss'], label='Baseline Train Loss')
+plt.plot(history_baseline.history['val_loss'], label='Baseline Val Loss', linestyle='--')
+plt.plot(history_naive.history['loss'], label='Naive MLP Train Loss')
+plt.plot(history_naive.history['val_loss'], label='Naive MLP Val Loss', linestyle='--')
+plt.plot(history_optimized.history['loss'], label='Optimized MLP Train Loss')
+plt.plot(history_optimized.history['val_loss'], label='Optimized MLP Val Loss', linestyle='--')
+plt.title('Model Loss Comparison')
+plt.xlabel('Epoch')
+plt.ylabel('Loss')
+plt.legend()
