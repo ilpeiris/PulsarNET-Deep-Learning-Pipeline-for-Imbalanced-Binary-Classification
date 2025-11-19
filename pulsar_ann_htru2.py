@@ -244,3 +244,17 @@ plt.ylabel('Accuracy')
 plt.legend()
 plt.tight_layout()
 plt.show()
+
+
+# 7. THRESHOLD TUNING (Optional fr now)/////
+
+
+# 8. PRINT PACKAGE VERSIONS (FOR APPENDIX)//////
+print("\n--- Package Versions for Reproducibility ---")
+import sklearn
+print(f"TensorFlow: {tf.__version__}")
+print(f"Pandas: {pd.__version__}")
+print(f"Numpy: {np.__version__}")
+print(f"Scikit-learn: {sklearn.__version__}")
+
+print("\n--- SCRIPT COMPLETE ---")
