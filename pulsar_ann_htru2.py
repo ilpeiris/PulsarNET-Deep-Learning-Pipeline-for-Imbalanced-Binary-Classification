@@ -119,3 +119,22 @@ history_naive = model_naive.fit(
 y_pred_prob_naive = model_naive.predict(X_test)
 y_pred_naive = (y_pred_prob_naive > 0.5).astype(int)
 print("--- Model 2 Trained ---")
+
+
+# 5. MODEL 3: OPTIMIZED MLP (WITH CLASS WEIGHTING)//
+print("\n--- Training Model 3: 'Optimized' MLP (with Class Weighting & Dropout) ---")
+
+# Calculate Class Weights to handle imbalance
+weights = compute_class_weight('balanced', classes=np.unique(y_train), y=y_train)
+class_weight_dict = {0: weights[0], 1: weights[1]}
+print(f"Calculated Class Weights: {class_weight_dict}")
+
+model_optimized = Sequential([
+    Dense(64, activation='relu', input_shape=(X_train.shape[1],)),
+    Dropout(0.3),
+    Dense(32, activation='relu'),
+    Dropout(0.3),
+    Dense(1, activation='sigmoid')
+])
+
+model_optimized.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
