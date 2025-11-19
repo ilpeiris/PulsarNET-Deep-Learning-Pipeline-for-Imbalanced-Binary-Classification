@@ -246,8 +246,17 @@ plt.tight_layout()
 plt.show()
 
 
-# 7. THRESHOLD TUNING (Optional fr now)/////
+# 7. THRESHOLD TUNING (FOR DISCUSSION)/////
 
+print("\n--- Optional: Threshold Tuning for Model 3 ---")
+threshold = 0.35
+y_pred_tuned = (y_pred_prob_optimized > threshold).astype(int)
+print(f"Results for Optimized_MLP with threshold = {threshold}")
+print(classification_report(y_test, y_pred_tuned, target_names=target_names))
+
+cm_tuned = confusion_matrix(y_test, y_pred_tuned)
+print("Tuned Confusion Matrix (Threshold 0.35):")
+print(cm_tuned)
 
 # 8. PRINT PACKAGE VERSIONS (FOR APPENDIX)//////
 print("\n--- Package Versions for Reproducibility ---")
