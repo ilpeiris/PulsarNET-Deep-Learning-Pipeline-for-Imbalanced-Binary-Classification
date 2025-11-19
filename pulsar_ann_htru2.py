@@ -138,3 +138,17 @@ model_optimized = Sequential([
 ])
 
 model_optimized.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+
+history_optimized = model_optimized.fit(
+    X_train, y_train,
+    epochs=20,
+    batch_size=32,
+    validation_split=0.1,
+    callbacks=[EarlyStopping(monitor='val_loss', patience=3, restore_best_weights=True)],
+    class_weight=class_weight_dict,
+    verbose=1
+)
+
+y_pred_prob_optimized = model_optimized.predict(X_test)
+y_pred_optimized = (y_pred_prob_optimized > 0.5).astype(int)
+print("--- Model 3 Trained ---")
