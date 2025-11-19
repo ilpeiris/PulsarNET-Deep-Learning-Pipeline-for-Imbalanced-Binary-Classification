@@ -105,6 +105,8 @@ model_naive = Sequential([
     Dense(1, activation='sigmoid')
 ])
 
+model_naive.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+
 history_naive = model_naive.fit(
     X_train, y_train,
     epochs=20,
@@ -113,3 +115,7 @@ history_naive = model_naive.fit(
     callbacks=[EarlyStopping(monitor='val_loss', patience=3, restore_best_weights=True)],
     verbose=1
 )
+
+y_pred_prob_naive = model_naive.predict(X_test)
+y_pred_naive = (y_pred_prob_naive > 0.5).astype(int)
+print("--- Model 2 Trained ---")
