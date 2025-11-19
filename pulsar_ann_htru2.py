@@ -52,3 +52,21 @@ except Exception as e:
 
 print("\nClass Distribution:")
 print(df['target_class'].value_counts())
+
+
+
+# ---
+# Data Preparation for Models
+
+X = df.drop('target_class', axis=1)
+y = df['target_class']
+
+# Stratified split to maintain class ratio
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=SEED, stratify=y)
+
+# Standard Scaling (Critical for ANNs)
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+print("\n--- Data Preprocessing Complete ---")
