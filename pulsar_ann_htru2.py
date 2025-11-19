@@ -155,6 +155,19 @@ model_optimized = Sequential([
 
 model_optimized.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
+
+# --- NEW Vis--
+print("\nGenerating Model Architecture Diagram...")
+plot_model(model_optimized,
+           to_file='model_optimized_architecture.png',
+           show_shapes=True,
+           show_layer_names=True,
+           rankdir='TB',
+           dpi=96)
+from IPython.display import Image
+display(Image('model_optimized_architecture.png'))
+#  NEW VIS CODE END ---
+
 history_optimized = model_optimized.fit(
     X_train, y_train,
     epochs=20,
