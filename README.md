@@ -152,7 +152,7 @@ pip install -r requirements.txt
 ### 3️⃣ Run the script
 
 ```bash
-python pulsar_classification.py
+python pulsar_ann_htru2.py
 ```
 
 ---
@@ -161,15 +161,13 @@ python pulsar_classification.py
 
 ```
 Pulsar-Classification-Artificial-Neural-Networks/
-├── data/
-│   └── HTRU_2.csv
 ├── figures/
 │   ├── class_distribution.png
 │   ├── model_architecture.png
 │   ├── feature_correlation_matrix.png
 │   ├── Model_Loss-Accuracy.png
 │   └── confusion_matrices.png
-├── pulsar_classification.py
+├── pulsar_ann_htru2.py
 ├── requirements.txt
 └── README.md
 ```
