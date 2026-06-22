@@ -1,4 +1,4 @@
-# PulsarNet - Deep Learning Pipeline for Imbalanced Binary Classification
+# PulsarNET - Deep Learning Pipeline for Imbalanced Binary Classification
 
 ![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat-square&logo=python&logoColor=white)
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-2.19-FF6F00?style=flat-square&logo=tensorflow&logoColor=white)
